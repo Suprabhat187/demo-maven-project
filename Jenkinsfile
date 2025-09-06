@@ -5,27 +5,21 @@ pipeline {
             agent { label 'compile-node' }
             steps {
                 git branch: 'main', url: 'https://github.com/Suprabhat187/demo-maven-project.git'
-                dir('demo-maven-project') {
-                    bat 'mvn clean compile'
-                }
+                bat 'mvn clean compile'
             }
         }
         stage('Test') {
             agent { label 'test-node' }
             steps {
                 git branch: 'main', url: 'https://github.com/Suprabhat187/demo-maven-project.git'
-                dir('demo-maven-project') {
-                    bat 'mvn test'
-                }
+                bat 'mvn test'
             }
         }
         stage('Package') {
             agent { label 'compile-node' }
             steps {
                 git branch: 'main', url: 'https://github.com/Suprabhat187/demo-maven-project.git'
-                dir('demo-maven-project') {
-                    bat 'mvn package'
-                }
+                bat 'mvn package'
             }
         }
     }
